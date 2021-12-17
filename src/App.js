@@ -1,13 +1,13 @@
 import React from "react";
-import '../App.css';
+import './App.css';
 import {Switch, Route, Link, useHistory} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
-import Form from './Form';
-import Order from './Order';
-import schema from '../validation/formSchema';
-import HomePage from './homepage'
+import Form from './components/Form';
+import Order from './components/Order';
+import schema from './validation/formSchema';
+import HomePage from './components/homepage'
 
 const initialFormValues = {
   size: '',
