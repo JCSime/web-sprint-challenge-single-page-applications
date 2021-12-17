@@ -15,7 +15,7 @@ export default function Homepage(){
             src='../Assets/Pizza.jpg'
             alt='handmade pizza'
             />
-            <button id='#order-pizza' onClick={routeToPizza} className='pizzaBtn'>Looking for some pizza?</button>
+            <button id='order-pizza' onClick={routeToPizza} className='pizzaBtn'>Looking for some pizza?</button>
         </div>
     )
 }

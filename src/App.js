@@ -84,7 +84,7 @@ export default function App() {
   }, [formValues])
   return (
     <>
-      <div className='container'>
+      <div className='form-container'>
         <h1>Pizza Pizza</h1>
         <div className='nav-links'>
           <Link to='/'>Home</Link>
