@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import Form from './Form';
 import Order from './Order';
 import schema from '../validation/formSchema';
+import HomePage from './homepage'
 
 const initialFormValues = {
   size: '',
@@ -35,14 +36,21 @@ export default function App() {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
-  const postNewOrder = newOrder => {
-    axios.post('http://fakeapi.com/api/orders', newOrder)
-    .then(resp => {
-      setOrders([resp.data, ...orders]);
+  const getOrders = () => {
+    axios.get('https://reqres.in/api/orders')
+    .then(res => {
+      setOrders(res.data.data);
     }).catch(err => console.error(err))
-    .finally(() => setFormValues(initialFormValues))
   }
 
+  const postNewOrder = newOrder => {
+    axios.post('https://reqres.in/api/orders')
+    .then(res => {
+      setOrders([res.data.data, ...orders ]);
+    }).catch(err => console.log(err))
+    .finally(() => setFormValues(initialFormValues))
+  }
+  
   const validate = (name, value) => {
     yup.reach(schema, name)
     .validate(value)
@@ -68,25 +76,41 @@ export default function App() {
   }
 
   useEffect(() => {
+    getOrders()
+  }, [])
+
+  useEffect(() => {
     schema.isValid(formValues).then(valid => setDisabled(!valid))
   }, [formValues])
   return (
-    <div className="App">
-      <header>Header goes here!</header>
-      <Form
-        values={formValues}
-        change={inputChange}
-        submit={formSubmit}
-        disabled={disabled}
-        errors={formErrors}
-      />
-      {
-        orders.map(order => {
-          return (
-            <Order key={order.id} details={order} />
-          )
-        })
-      }
-    </div>
+    <>
+      <div className='container'>
+        <h1>Pizza Pizza</h1>
+        <div className='nav-links'>
+          <Link to='/'>Home</Link>
+          <Link to='/pizza'>Pizza Maker</Link>
+          </div>
+
+        <Switch>
+          <Route path='/pizza/confirm'>
+            <Order details={orders}/>
+          </Route>
+          <Route path='/pizza'>
+            <Form 
+            values={formValues}
+            change={inputChange}
+            submit={formSubmit}
+            errors={formErrors}
+            disabled={disabled}
+            />
+
+
+          </Route>
+          <Route path='/'>
+            <HomePage />
+          </Route>
+        </Switch>
+      </div>
+    </>
   );
 };
