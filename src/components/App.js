@@ -6,6 +6,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import Form from './Form';
 import Order from './Order';
+import schema from '../validation/formSchema';
 
 const initialFormValues = {
   size: '',
