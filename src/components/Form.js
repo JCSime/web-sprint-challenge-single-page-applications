@@ -36,6 +36,7 @@ export default function Form(props) {
                             onChange={onChange}
                             value={values.size}
                             name='size'
+                            id='size-dropdown'
                         >
                             <option value=''>Select</option>
                             <option value='small'>Small</option>
@@ -115,6 +116,8 @@ export default function Form(props) {
                         onChange={onChange}
                         name='specialIns'
                         type='text'
+                        id='special-text'
+                        placeholder='Any notes?'
                     />
                 </div>
                 <div className='form-group submit'>
