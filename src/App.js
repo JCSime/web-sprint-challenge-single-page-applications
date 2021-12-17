@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import Form from './components/Form';
 import Order from './components/Order';
 import schema from './validation/formSchema';
-import HomePage from './components/homepage'
+import Homepage from './components/homepage'
 
 const initialFormValues = {
   size: '',
@@ -105,7 +105,7 @@ export default function App() {
             />
           </Route>
           <Route path='/'>
-            <HomePage />
+            <Homepage />
           </Route>
         </Switch>
       </div>

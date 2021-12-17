@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
 
-export default function HomePage(){
+export default function Homepage(){
     const history = useHistory()
 
     const routeToPizza = () => {
@@ -15,7 +15,7 @@ export default function HomePage(){
             src='../Assets/Pizza.jpg'
             alt='handmade pizza'
             />
-            <button onClick={routeToPizza} className='pizzaBtn'>Looking for some pizza?</button>
+            <button id='order-pizza' onClick={routeToPizza} className='pizzaBtn'>Looking for some pizza?</button>
         </div>
     )
 }
